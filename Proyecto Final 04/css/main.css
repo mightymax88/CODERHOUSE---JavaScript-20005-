@@ -1,0 +1,282 @@
+@charset "UTF-8";
+/* Empezando con Responsive */
+* {
+  box-sizing: border-box; }
+
+/* Importar otros scss generales */
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  list-style: none;
+  background-color: #68fab6; }
+
+.breadcrumb-item + .breadcrumb-item::before {
+  display: inline-block;
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+  color: #6c757d;
+  content: "-"; }
+
+.breadcrumb-item + .breadcrumb-item:hover::before {
+  text-decoration: underline; }
+
+.breadcrumb-item + .breadcrumb-item:hover::before {
+  text-decoration: none; }
+
+.breadcrumb-item.active {
+  color: #6c757d; }
+
+/* Importo scss de las otras secciones */
+.infoemp {
+  text-align: justify; }
+  .infoemp__im {
+    display: block;
+    margin-left: auto;
+    margin-right: auto; }
+
+/* Agregando barra de búsqueda */
+input[type=text] {
+  padding: 4px;
+  margin-right: 10px;
+  font-size: 14px;
+  border: none;
+  font-family: 'Bebas Neue', cursive; }
+
+.btn {
+  background: white; }
+
+/* Make the image fully responsive */
+.carousel-inner img {
+  width: 100%;
+  height: 100%; }
+
+.carousel-caption {
+  color: black; }
+
+/* Sector Empresa en Index -------------------------------------------*/
+.infoEmp {
+  display: flex;
+  color: black; }
+  .infoEmp__im {
+    translate: -50px; }
+
+@media screen and (max-width: 880px) {
+  .infoEmp__im {
+    display: none; } }
+
+/* Armando Productos */
+.prodl {
+  margin-top: 20px;
+  background: #e27bfc;
+  border-radius: 8px; }
+  .prodl__fakeimg {
+    height: 200px;
+    background: #aaa; }
+
+.prodr {
+  margin-top: 20px; }
+  .prodr__fakeimg {
+    height: 300px;
+    background: #aaa; }
+
+.btn {
+  border: 2px solid black;
+  background-color: white;
+  color: black;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer; }
+
+/* Green */
+.success {
+  border-color: #04AA6D;
+  color: green; }
+
+.success:hover {
+  background-color: #04AA6D;
+  color: white; }
+
+/* Blue */
+.info {
+  border-color: #2196F3;
+  color: dodgerblue; }
+
+.info:hover {
+  background: #2196F3;
+  color: white; }
+
+/* Gray */
+.default {
+  border-color: #e7e7e7;
+  color: black; }
+
+.default:hover {
+  background: #e7e7e7; }
+
+/* Armando para la sección Nosotros ---------------------------------------------*/
+.nosotros {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  color: white; }
+  .nosotros__empresa {
+    background-color: #e27bfc;
+    line-height: 75px;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    border-radius: 10px;
+    margin: 10px; }
+  .nosotros__mision {
+    background-color: white;
+    margin: 10px;
+    line-height: 75px;
+    font-family: 'Poppins', sans-serif;
+    text-align: left;
+    border-radius: 10px;
+    color: black; }
+  .nosotros__vision {
+    background-color: white;
+    margin: 10px;
+    line-height: 75px;
+    font-family: 'Poppins', sans-serif;
+    text-align: right;
+    border-radius: 10px;
+    color: black; }
+  .nosotros__quien {
+    background-color: #68fab6;
+    margin: 10px;
+    line-height: 75px;
+    color: black;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    border-radius: 10px; }
+
+/* Armando la sección Blog con GRID -----------------------------------------------*/
+.blogg {
+  padding: 10px 10px; }
+  .blogg__item {
+    text-align: left;
+    font-size: 20px;
+    border-style: solid;
+    border-width: 1px;
+    margin: 5px; }
+  .blogg__cont {
+    text-align: center;
+    padding: 10px 10px;
+    background-color: #68fab6;
+    border-radius: 8px; }
+
+/* Armando la sección Contacto -----------------------------------------------------*/
+.flexContacto {
+  display: flex;
+  flex-direction: row; }
+  .flexContacto__info {
+    margin: 5px;
+    padding-left: 5px;
+    padding-right: 20px;
+    text-align: left;
+    font-family: 'Poppins', sans-serif;
+    background-color: #68fab6;
+    border-radius: 8px; }
+  .flexContacto__im {
+    display: block;
+    transform: translate(-20px, -10px); }
+
+/* Formatos------------------------------------------------------------------- */
+.header {
+  text-align: left; }
+  .header__encabezado {
+    color: #0a884d;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 200px;
+    margin-top: 15px; }
+  .header__logo {
+    margin-left: 0px;
+    margin-top: 0px; }
+
+.navbar {
+  background-color: #7b0a97;
+  color: white;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  font-family: 'Bebas Neue', cursive;
+  font-size: 20px; }
+
+h2 {
+  color: #0a884d;
+  text-align: left;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 22px;
+  border-bottom: 2px solid #7b0a97; }
+
+h3 {
+  color: black;
+  text-align: left;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 18px; }
+
+p {
+  font-family: 'Poppins', sans-serif; }
+
+body {
+  margin: 0px; }
+
+.row {
+  margin: 0px; }
+
+@media screen and (max-width: 960px) {
+  .flexContacto__im {
+    display: none; } }
+
+/* Estilo del footer -----------------------------------------------------*/
+.footer {
+  padding: 3px;
+  background-color: #7b0a97;
+  color: white;
+  border-radius: 10px; }
+  .footer__autor {
+    text-align: right; }
+  .footer__seguinos {
+    text-align: left; }
+  .footer__derechos {
+    text-align: center; }
+
+/* Redes sociales para el footer -------------------------------------------------*/
+.fa {
+  padding: 20px;
+  font-size: 30px;
+  width: 60px;
+  text-align: center;
+  text-decoration: none;
+  margin: 2px 2px;
+  border-radius: 70%;
+  color: white; }
+
+.fa:hover {
+  opacity: 0.7; }
+
+/*Creo each para cambiar el background en las 3 redes sociales*/
+.fa-facebook {
+  background: #3B5998; }
+
+.fa-instagram {
+  background: radial-gradient(circle farthest-corner at 35% 90%, #fec564, transparent 50%), radial-gradient(circle farthest-corner at 0 140%, #fec564, transparent 50%), radial-gradient(ellipse farthest-corner at 0 -25%, #5258cf, transparent 50%), radial-gradient(ellipse farthest-corner at 20% -50%, #5258cf, transparent 50%), radial-gradient(ellipse farthest-corner at 100% 0, #893dc2, transparent 50%), radial-gradient(ellipse farthest-corner at 60% -20%, #893dc2, transparent 50%), radial-gradient(ellipse farthest-corner at 100% 100%, #d9317a, transparent), linear-gradient(#6559ca, #bc318f 30%, #e33f5f 50%, #f77638 70%, #fec66d 100%); }
+
+.fa-linkedin {
+  background: #007bb5; }
+
+/* Efectos de formato */
+h5{
+  margin: 0;
+  display: inline-block;
+}
+button {
+  float: right;
+}
+
+/* Agrego cursor pointer */
+.manito{
+  cursor: pointer;
+}

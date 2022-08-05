@@ -1,0 +1,7 @@
+{
+    "familia":[
+        {"firstName":"Florencia", "funcion":"Mamá"}, 
+        {"firstName":"Maxi", "funcion":"Papá"},
+        {"firstName":"Laura", "funcion":"Abuela materna"}
+    ]
+}

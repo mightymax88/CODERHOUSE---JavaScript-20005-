@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<!--Lenguaje definido-->
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Seguimiento de desarrollo del bebé y estado de la madre, con integración de estudios médicos">
+        <meta name="keywords" content="bebe, bebé, desarrollo, FUM, FPP">
+        <!-- Título -->
+        <title>Babylytics</title>
+        <!-- Agregado de links -->
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <!-- Agregado de fuentes -->
+        <!-- Todavía no incluidas -->
+    </head>
+    <!-- Empieza el cuerpo -->
+    <body>
+        <!-- Barra superior -->
+        <div class="w3-bar w3-top w3-black w3-large" style="z-index:4">
+            <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey" onclick="w3_open();"><i class="fa fa-bars"></i>  Menu</button>
+            <span class="w3-bar-item w3-right">Babylytics - Seguimiento de tu bebé</span>
+        </div>
+        <br>
+        <!-- Barra lateral -->
+        <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
+            <div class="w3-container w3-row">
+                <div class="w3-col s3">
+                    <img src="imagenes/bb_usuario.png" class="w3-circle w3-margin-right" style="width:46px">
+                </div>
+                <div class="w3-col s9 w3-bar">
+                    <span>Bienvenido, <strong>Usuario</strong></span><br>
+                    <a href="#" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i></a>
+                    <a href="#" class="w3-bar-item w3-button"><i class="fa fa-user"></i></a>
+                    <a href="#" class="w3-bar-item w3-button"><i class="fa fa-cog"></i></a>
+                </div>
+            </div>
+            <hr>
+            <div class="w3-container">
+                <h5>Panel principal</h5>
+            </div>
+            <div class="w3-bar-block">
+                <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
+                <a href="#" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-eye fa-fw"></i> General</a>
+                <a href="#" class="w3-bar-item w3-button w3-padding" id="signoZod"><i class="fa fa-users fa-fw"></i> Signo Zodíaco</a>
+                <a href="#" class="w3-bar-item w3-button w3-padding" style="text-decoration: line-through; font-style: italic;"><i class="fa fa-bullseye fa-fw"></i> Estudios</a>
+                <!-- <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bell fa-fw"></i> Novedades</a> -->
+                <!-- <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-history fa-fw"></i> Historia</a> -->
+                <!-- <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-cog fa-fw"></i> Configuración</a><br><br> -->
+            </div>
+        </nav>
+
+        <!-- Overlay effect when opening sidebar on small screens -->
+        <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+        
+        <!-- !PAGE CONTENT! -->
+        <div class="w3-main" style="margin-left:300px;margin-top:43px;">
+            <!-- Header -->
+            <header class="w3-container" style="padding-top:22px">
+                <h5><b><i class="fa fa-dashboard"></i> Mi monitor</b></h5>
+            </header>
+            <div class="w3-panel" id="lineaC">
+                <p>Ingrese FUM:</p><input type="text" id="campoFUM" value="XX/XX"><button id="bCalcular" onclick="myCalcular()">Calcular</button>
+            </div>
+            <div class="w3-row-padding w3-margin-bottom" id="monitor1">
+                <div class="w3-quarter">
+                <div class="w3-container w3-red w3-padding-16" id="cajaFPP">
+                    <div class="w3-left"><i class="fa fa-comment w3-xxxlarge"></i></div>
+                    <div class="w3-right">
+                    <h3 id="demo"></h3>
+                    </div>
+                    <div class="w3-clear" onmouseover="FPPOn(this)" onmouseout="FPPOut(this)">
+                        FPP
+                    </div>
+                </div>
+                </div>
+                <div class="w3-quarter">
+                <div class="w3-container w3-blue w3-padding-16" id="cajaSem">
+                    <div class="w3-left"><i class="fa fa-child w3-xxxlarge"></i></div>
+                    <div class="w3-right">
+                    <h3 id="demo2"></h3>
+                    </div>
+                    <div class="w3-clear" onmouseover="SemOn(this)" onmouseout="SemOut(this)">Semana</div>
+                </div>
+                </div>
+                <div class="w3-quarter">
+                <div class="w3-container w3-teal w3-padding-16" id="cajaTam">
+                    <div class="w3-left"><i class="fa fa-arrows-v w3-xxxlarge"></i></div>
+                    <div class="w3-right">
+                    <h3 id="demo3"></h3>
+                    </div>
+                    <div class="w3-clear" onmouseover="TamOn(this)" onmouseout="TamOut(this)">Tamaño [cm]</div>
+                </div>
+                </div>
+                <div class="w3-quarter">
+                <div class="w3-container w3-orange w3-text-white w3-padding-16" id="cajaD">
+                    <div class="w3-left"><i class="fa fa-hourglass-2 w3-xxxlarge"></i></div>
+                    <div class="w3-right">
+                    <h3 id="demo4"></h3>
+                    </div>
+                    <div class="w3-clear" onmouseover="DiasOn(this)" onmouseout="DiasOut(this)">Días restantes</div>
+                    </div>
+                </div>
+            </div>
+            <!-- Campos de información -->
+            <div class="w3-row-padding w3-margin-bottom" id="info1">
+                <p>El día de parto, o FPP (fecha probable de parto), es la fecha en la cual se espera que te pondrás de parto.
+                    Como es una fecha estimada, es probable que te pongas de parto entre dos semanas antes y después de la fecha prevista de parto.</p>
+            </div>
+
+            <div class="w3-row-padding w3-margin-bottom" id="info2">
+                <p>El embarazo humano dura una media de 40 semanas, que pueden traducirse también en meses, unos 9 (o bien 10 meses lunares de 28 días).</p>
+            </div>
+
+            <div class="w3-row-padding w3-margin-bottom" id="info3">
+                <p>A los 9 meses esperamos un bebé promedio de un poco más de 3,2 kilos y cerca de 51 centímetros.</p>
+            </div>
+
+            <div class="w3-row-padding w3-margin-bottom" id="info4">
+                <p>La gestación de un niño supone 280 días aproximadamente: el tiempo que dura un embarazo puede variar mucho de una mujer a otra y llegar incluso hasta la semana 42.</p>
+            </div>
+            <!-- Terminan campos de información -->
+            <div class="w3-panel">
+                <div class="w3-row-padding" style="margin:0 -16px">
+                    <div class="w3-row-padding">
+                        <h5>Información:</h5>
+                        <table class="w3-table w3-striped w3-white">
+                        <tr>
+                            <td><i class="fa fa-user w3-text-blue w3-large"></i></td>
+                            <td>Nombre del bebé:</td>
+                            <td><i id="nombreBB">No definido</i> <button onclick="myNombreBB()">Editar</button></td>
+                        </tr>
+                        <tr>
+                            <td><i class="fa fa-bell w3-text-red w3-large"></i></td>
+                            <td>Próximo cita obstetra:</td>
+                            <td><input type="date" id="myDate" value="2021-12-31"></td>
+                        </tr>
+                        <tr>
+                            <td><i class="fa fa-users w3-text-yellow w3-large"></i></td>
+                            <td>Género:</td>
+                            <td>
+                                <form>
+                                    <select id="myGenero" onchange="elijoGenero()">
+                                        <option>---</option>
+                                        <option>Niño</option>
+                                        <option>Niña</option>
+                                    </select>
+                                </form>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><i class="fa fa-comment w3-text-red w3-large"></i></td>
+                            <td>Signo y compatibilidad:</td>
+                            <td><i id="signoM">No definido</i></td>
+                        </tr>
+                        <tr>
+                            <td><i class="fa fa-bookmark w3-text-blue w3-large"></i></td>
+                            <td>Institución de parto:</td>
+                            <td>
+                                <form>
+                                    <select id="myHops">
+                                        <option id="hosp1">---</option>
+                                        <option id="hosp2">---</option>
+                                        <option id="hosp3">---</option>
+                                    </select>
+                                </form>
+                            </td>
+                        </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        <hr>
+        <div class="w3-container" id="porcBB">
+            <h5>Estado general</h5>
+            <p>Embarazo</p>
+            <div class="w3-grey">
+                <div id="barraE" class="w3-container w3-center w3-padding w3-green" style="width:1%">
+                    <p id="barraEmb"></p>
+                </div>
+            </div>
+        </div>
+        <hr>
+
+        <div class="w3-container" id="pContactos">
+            <h5>Usuarios recientes: <button id="mContactos" onclick="myContactos()">Animar</button></h5>
+            <ul class="w3-ul w3-card-4 w3-white">
+            <li class="w3-padding-16">
+                <img src="/w3images/avatar2.png" class="w3-left w3-circle w3-margin-right" style="width:35px">
+                <span class="w3-xlarge">Mamá</span><br>
+            </li>
+            <li class="w3-padding-16">
+                <img src="/w3images/avatar5.png" class="w3-left w3-circle w3-margin-right" style="width:35px">
+                <span class="w3-xlarge">Papá</span><br>
+            </li>
+            <li class="w3-padding-16">
+                <img src="/w3images/avatar6.png" class="w3-left w3-circle w3-margin-right" style="width:35px">
+                <span class="w3-xlarge">Abuela</span><br>
+            </li>
+            </ul>
+        </div>
+        <hr>
+
+        <div class="w3-container">
+            <h5>Comentarios recientes:</h5>
+            <div class="w3-row">
+            <div class="w3-col m2 text-center">
+                <img class="w3-circle" src="/w3images/avatar3.png" style="width:96px;height:96px">
+            </div>
+            <div class="w3-col m10 w3-container">
+                <h4>Papá <span class="w3-opacity w3-medium">Sep 29, 2021, 9:12 PM</span></h4>
+                <p>Tenemos que definir la fecha de la tercer ecografía, para avanzar el porcentaje de Estudios Prenatales.</p><br>
+            </div>
+            </div>
+
+            <div class="w3-row">
+            <div class="w3-col m2 text-center">
+                <img class="w3-circle" src="/w3images/avatar1.png" style="width:96px;height:96px">
+            </div>
+            <div class="w3-col m10 w3-container">
+                <h4>Tío <span class="w3-opacity w3-medium">Sep 28, 2021, 10:15 PM</span></h4>
+                <p>En qué fecha vamos a saber el sexo?</p><br>
+            </div>
+            </div>
+        </div>
+        <br>
+        
+        <!-- Empieza Footer -->
+        <footer class="w3-container w3-dark-grey w3-padding-32">
+            <div class="container-fluid footer">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="footer__seguinos">
+                            <p>Seguinos</p>
+                            <a href="https://www.instagram.com" class="fa fa-instagram" target="_blank"></a>
+                            <a href="https://www.linkedin.com" class="fa fa-linkedin" target="_blank"></a>
+                            <a href="https://www.facebook.com" class="fa fa-facebook" target="_blank"></a>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="footer__autor">
+                            <p>Autor: Maximiliano Filipuzzi<br>
+                            <a href="mailto:maxi.filipuzzi@gmail.com">maxi.filipuzzi@gmail.com</a><br>
+                        </div>
+                    </div>
+                    <br>
+                </div>
+                <div class="footer__derechos">
+                    <p>2020 - 2021 ©Babylytics - Todos los derechos reservados.</p>
+                </div>
+            </div>
+        </footer>
+        <!-- Etiquetas script -->
+        <script src="js/main.js"></script>
+        <script type="text/javascript" src="jsonfiles/inst.json"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.js"   integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="   crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="js/my_jquery_functions.js"></script>
+    </body>
+</html>
